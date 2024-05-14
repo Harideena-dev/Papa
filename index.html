@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routing Example</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+    <style>
+        @keyframes pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+    
+        .luvu-animation {
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes fadeIn {
+          from {
+              opacity: 0;
+          }
+          to {
+              opacity: 1;
+          }
+      }
+    </style>
+</head>
+<body>
+   
+     <h1 class="head">Papa</h1>
+    <!-- Navigation buttons -->
+    <button onclick="navigateToPage('page1')" class="btn-cl">click</button>
+    <button onclick="navigateToPage('page2')" class="btn-cl"> click </button>
+    <button onclick="navigateToPage('page3')" class="btn-cl">click</button>
+
+    <!-- Page content container -->
+    <div id="pageContent"></div>
+
+    <script>
+        // Function to navigate to different pages
+        function navigateToPage(pageName) {
+            // Update the URL based on the page name
+            window.location.href = '#' + pageName;
+            // Load content based on the page name
+            switch (pageName) {
+                case 'page1':
+                    document.getElementById('pageContent').innerHTML = `
+                        <p class="page1-para">Hey pappa nee konjam nillu </p>
+                        <p class="page1-para"> Ethukku unakku ithainai lollu</p>
+                        <p class="page1-para">Nenjula coola oothudhu cola
+                          Dhagamae adangala adangala</p>
+  <p class="gap"> </p>
+                        <p class="page1-para1  "> Why doesn’t she talk to me</p>
+                        <p class="page1-para1  "> Vaavaa… chinnakka <br> Love u konjam sollukka</p>
+                        <p class="gap"> </p>
+                        <p class="page1-para0">Why doesn’t she walk with me </p>
+                        <p class="page1-para0"> Ivandhan unnakku <br> Pakkam konjam vaakka</p>
+
+                          <p class="gap"> </p>
+                        <p class="page1-para2"> Vayasu payanai moraika vendam <br>
+                          Ada konjam sirikka sollu </p>
+                        <p class="page1-para2">Ava ora kannil partha <br> podhum
+                          Looku kuduka sollu </p>
+                            <p class="gap"> </p>
+                        <p class="page1-para3"> Why doesn’t she just love me </p>
+                        <p class="page1-para3">Paavam pozhaikattum      <br>      Love you sollumma</p>
+                        
+                          <p class="gap"> </p>
+                        <p class="page1-para4">  Why doesn’t she just love me                        </p>
+                        <p class="page1-para4"> Kenjuraan thalaivan <br>
+                          Love you sollamma
+                          </p>
+                        `;
+
+                    break;
+                
+                case 'page2':
+                    var content = '';
+                    for(var i = 0; i < 100; i++) {
+                        content += '<p class="page2-para">Alagiye....</p>';
+                    }
+                    document.getElementById('pageContent').innerHTML =  content;
+                    break;
+                
+                    case 'page3':
+                    document.getElementById('pageContent').innerHTML = `<div class="container" onclick="navigateToPage('page3')">
+                        <div class="row">
+                            <div class="col text-center">
+                                <h1 class="luvu-animation">
+                                    <span class="text-danger">V</span>
+                                    <span class="text-primary">I</span>
+                                    <span class="text-success">J</span>
+                                    <span class="text-warning">I</span>
+                                    <span class="text-danger"> </span>
+                                    <span class="text-primary">P</span>
+                                    <span class="text-success"> A</span>
+                                    <span class="text-warning">P</span>
+                                    <span class="text-danger">A</span>
+                                    <!-- <span class="text-primary">M</span>
+                                    <span class="text-success">U</span> -->
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                   `;
+
+                    break;
+                
+                default:
+                    // Handle invalid page name
+                    document.getElementById('pageContent').innerHTML = '<h1>404 - Page Not Found</h1>';
+            }
+        }
+
+        // Function to load content based on URL hash
+        function loadContent() {
+            // Get the page name from the URL hash
+            var pageName = window.location.hash.substr(1);
+            // Default page if no hash or invalid hash
+            if (pageName === '') {
+                pageName = 'page1';
+            }
+            // Call navigateToPage to load content
+            navigateToPage(pageName);
+        }
+
+        // Call loadContent when the page loads and when the hash changes
+        window.onload = loadContent;
+        window.onhashchange = loadContent;
+    </script>
+</body>
+</html>
